@@ -9,3 +9,5 @@ How the f you find here?
 anyway,this is a storage which will usually store my homework/project design/module stuff
 
 <26/4/14::fighting with binarytree recently>
+
+​温馨提醒：不搞竞赛别学我用万能头和直接using namaspace std
