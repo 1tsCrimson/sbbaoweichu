@@ -1,0 +1,48 @@
+#include<vector>
+#include<iostream>
+using namespace std;
+
+int p[10005];
+int s[10005];
+
+int find(int x) {
+	if (x == p[x])return x;
+	else return p[x]=find(p[x]);
+}
+
+void unite(int x, int y) {
+	int rootx=find(x), rooty=find(y);
+	if (rootx != rooty) {
+		if (s[rootx] >= s[rooty]) {
+			s[rootx] += s[rooty];
+			p[rooty] = rootx;
+		}
+		else {
+			s[rooty] += s[rootx];
+			p[rootx] = rooty;
+		}
+	}
+
+}
+void initial(int n) {
+	for (int i = 0; i <= n; i++) {
+		p[i] = i;
+		s[i] = 1;
+	}
+}
+int main() {
+	int n, k; cin >> n >> k;
+	initial(n+1);
+	for (int i = 0; i < k; i++) {
+		int tmp; cin >> tmp;
+		int x, y; cin >> x >> y;
+		if (tmp == 1) {
+			
+			unite(x, y);
+		}
+		else if(tmp==2){
+			if (find(x) != find(y)) cout << "NO" << endl;
+			else { cout << "YES" << endl; }
+		}
+	}
+}
